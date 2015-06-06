@@ -1,6 +1,7 @@
 public class Hero {
     String name; // 名前の宣言
     int hp; // HPの宣言
+    Sword sword;
 
     void attack() {
 
@@ -27,6 +28,16 @@ public class Hero {
     void sleep() {
         this.hp = 100;
         System.out.println(this.name + "は、眠って回復した！" );
+    }
+
+    Hero(String name) {
+        this.hp = 100;
+        this.name = name;
+    }
+
+    Hero() {
+        this.hp = 100;
+        this.name = "ダミー";
     }
 
 }
