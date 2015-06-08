@@ -1,0 +1,14 @@
+public class SuperHero extends Hero {
+    private boolean flying;
+    
+    public void fly() {
+        this.flying = true;
+        System.out.println("飛び上がった！");
+    }
+
+    public void lnad() {
+        this.flying = false;
+        System.out.println("着地した！");
+    }
+
+}
