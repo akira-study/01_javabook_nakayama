@@ -1,5 +1,5 @@
 public class Inn {
-    void checkin(Hero h) {
-        h.hp = 100;
+    void checkin(Character c) {
+        c.hp = 100;
     }
 }

@@ -1,45 +1,25 @@
-public class Hero {
-    private String name; 
-    private int hp; 
+public class Hero extends Character {
     private static int money;
     private Sword sword;
-    
-    public String getName() {
-        return this.name;
+
+    // コンストラクタ
+    public Hero(String name, int hp) {
+        super(name, hp);
     }
-
-    public void setName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("名前がnullです。処理を中断します。");
-        }
-
-        if (name.length() <= 1) {
-            throw new IllegalArgumentException("名前が短すぎます。処理を中断します。");
-        }
-
-        if (name.length() >= 8) {
-            throw new IllegalArgumentException("名前が長すぎます。処理を中断します。");
-        }
-        
-        this.name = name;
+    public Hero() {
+        super();
     }
-
-    public int getHp() {
-        return this.hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
+    // getterメソッド
     public Sword getSword() {
         return this.sword;
     }
 
+    // setterメソッド
     public void setSword(Sword sword) {
         this.sword = sword;
     }
     
+
     public void bye() {
         System.out.println("勇者は別れを告げた");
     }
@@ -79,10 +59,6 @@ public class Hero {
     public void sleep() {
         this.hp = 100;
         System.out.println(this.getName() + "は、眠って回復した！" );
-    }
-
-    public Hero() {
-        System.out.println("Heroのコンストラクタが動作");
     }
 
     public static void setRandomMoney() {

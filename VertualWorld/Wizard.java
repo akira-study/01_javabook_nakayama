@@ -1,9 +1,39 @@
-public class Wizard {
-    private String name;
-    private int hp;
+public class Wizard extends Character {
     private int mp;
     private Wand wand;
 
+    // コンストラクタ
+    public Wizard(String name, int hp, int mp) {
+        super(name, hp);
+        this.mp = mp;
+    }
+    public Wizard() {
+        super();
+        this.mp = 50;
+    }
+    // getterメソッド
+    public int getMp() {
+        return this.mp;
+    }
+    public Wand getWand() {
+        return this.wand;
+    }
+    // setterメソッド
+    public void setWand(Wand wand) {
+        this.wand = wand;
+    }
+    public void setMp(int mp) {
+        this.mp = mp;
+    }
+
+    // Characterクラスからオーバーライド
+    public void attack(Matango m) {
+       System.out.println(this.name + "の攻撃！") ;
+       System.out.println("敵に3ポイントのダメージ");
+       m.hp -= 3;
+    }
+
+    // Wizard特有
     public void heal(Hero h) {
         int basePoint = 10; // 基本回復ポイント
         int recoverPoint = (int) (basePoint * this.getWand().getPower()); // 杖による増幅
@@ -11,48 +41,11 @@ public class Wizard {
         System.out.println(h.getName() + "のHPを" + recoverPoint + "回復した！");
     }
 
-    public int getHp() {
-        return this.hp;
+    public void fireball(Matango m) {
+        System.out.println(this.name + "は火の玉を放った!");
+        System.out.println("敵に20ポイントのダメージ");
+        m.hp -= 20;
+        this.mp -= 5;
     }
-
-    public void setHp(int hp) {
-        if (hp < 0) {
-            this.hp = 0;
-        } else {
-            this.hp = hp;
-        }
-    }
-
-    public int getMp() {
-        return this.mp;
-    }
-
-    public void setMp(int mp) {
-        if (mp < 0) {
-            throw new IllegalArgumentException("設定されようとしているMPが異常です。");
-        }
-        this.mp = mp;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        if (name == null || name.length() < 3) {
-            throw new IllegalArgumentException("設定されようとしている名前が異常です。");
-        }
-        this.name = name;
-    }
-
-    public Wand getWand() {
-        return this.wand;
-    }
-
-    public void setWand(Wand wand) {
-        if (wand == null) {
-            throw new IllegalArgumentException("設定されようとしている杖がnullです。");
-        }
-        this.wand = wand;
-    }
+    
 }
